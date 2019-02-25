@@ -40,11 +40,12 @@ function handleEvent(event) {
   }
   if (event.replyToken === '00000000000000000000000000000000' ||
     event.replyToken === 'ffffffffffffffffffffffffffffffff') {
+    console.log('token fail')
     return;
   }
 
   // create a echoing text message
-  const echo = { type: 'text', text: 'hello' };
+  const echo = { type: 'text', text: event.message.text };
 
   // use reply API
   return client.replyMessage(event.replyToken, echo);

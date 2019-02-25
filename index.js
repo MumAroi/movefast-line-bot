@@ -5,8 +5,8 @@ const express = require('express');
 
 // create LINE SDK config from env variables
 const config = {
-  channelAccessToken: 'ECrceNAPz9o/sTtGoslmzNOQVNMN+8TkfedGMCz9FLIFijyT4ykwXFSQ6xd9g7WgCw6wG1NYZxAQLAAajRJNmrTtInWOBgSNROJO3GpjTIQIoIpAoPJm8xkXvzQly/J49U/0rByUFCDXrQ5Z9PUlwdB04t89/1O/w1cDnyilFU=',
-  channelSecret: 'fb24bc53fffdcecfbb119f5d1cc5cc98',
+  channelAccessToken: process.env.CHANNEL_ACCESS_TOKEN,
+  channelSecret: process.env.CHANNEL_SECRET
 };
 
 // create LINE SDK client
@@ -15,6 +15,11 @@ const client = new line.Client(config);
 // create Express app
 // about Express itself: https://expressjs.com/
 const app = express();
+
+app.get('/', (req,res)=>{
+  res.send('<h1>This is homepage.</h1>');
+});
+
 
 // register a webhook handler with middleware
 // about the middleware, please refer to doc

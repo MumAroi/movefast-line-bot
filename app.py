@@ -38,7 +38,8 @@ def handle_text_message(event):
     text = event.message.text #message from user
     line_bot_api.reply_message(
         event.reply_token,
-        TextSendMessage(text=text)) #reply the same message from user
+        TextSendMessage(text=text)
+    ) #reply the same message from user
     
 
 if __name__ == "__main__":

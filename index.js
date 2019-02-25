@@ -17,6 +17,8 @@ const client = new line.Client(config);
 const app = express();
 
 app.get('/', (req,res)=>{
+  console.log(line.middleware(config))
+  console.log(config)
   res.send('<h1>This is homepage.</h1>');
 });
 

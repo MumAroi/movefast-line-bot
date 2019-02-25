@@ -6,7 +6,7 @@ const express = require('express');
 // create LINE SDK config from env variables
 const config = {
   channelAccessToken: process.env.CHANNEL_ACCESS_TOKEN,
-  channelSecret: process.env.CHANNEL_SECRET,
+  channelSecret: process.env.CHANNEL_SECRET
 };
 
 // create LINE SDK client
@@ -26,7 +26,6 @@ app.post('/callback', line.middleware(config), (req, res) => {
   Promise
     .all(req.body.events.map(handleEvent))
     .then((result) => {
-      line.middleware(config)
       return res.json(result)
     })
     .catch((err) => {

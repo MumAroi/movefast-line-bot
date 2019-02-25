@@ -36,7 +36,7 @@ def callback():
 @handler.add(MessageEvent, message=TextMessage)
 def handle_text_message(event):
     text = event.message.text #message from user
-    print( event.reply_token)
+    print(text)
     line_bot_api.reply_message(
         event.reply_token,
         TextSendMessage(text=text)) #reply the same message from user

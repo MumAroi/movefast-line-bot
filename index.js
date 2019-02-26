@@ -23,6 +23,16 @@ app.get('/', (req,res)=>{
 // register a webhook handler with middleware
 // about the middleware, please refer to doc
 app.post('/callback', line.middleware(config), (req, res) => {
+
+  if (req.body.destination) {
+    console.log("Destination User ID: " + req.body.destination);
+  }
+
+  // req.body.events should be an array of events
+  if (!Array.isArray(req.body.events)) {
+    return res.status(500).end();
+  }
+  
   Promise
     .all(req.body.events.map(handleEvent))
     .then((result) => res.json(result))
@@ -44,8 +54,15 @@ function handleEvent(event) {
     return;
   }
 
+  const echo = {};
+  if(event.message.text == 'shop')
+  {
+    echo = { type: 'text', text: 'https://operation.dev.movefast.me/line/shop/'+ event.source.userId }
+  }
+
+  echo = { type: 'text', text: event.message.text }
+
   // create a echoing text message
-  const echo = { type: 'text', text: event.message.text };
 
   // use reply API
   return client.replyMessage(event.replyToken, echo);

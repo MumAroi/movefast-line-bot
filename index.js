@@ -23,7 +23,6 @@ app.get('/', (req,res)=>{
 // register a webhook handler with middleware
 // about the middleware, please refer to doc
 app.post('/callback', line.middleware(config), (req, res) => {
-  console.log(req.body.events)
   Promise
     .all(req.body.events.map(handleEvent))
     .then((result) => res.json(result))
@@ -44,7 +43,6 @@ function handleEvent(event) {
     event.replyToken === 'ffffffffffffffffffffffffffffffff') {
     return;
   }
-  console.log('pass')
 
   // create a echoing text message
   const echo = { type: 'text', text: event.message.text };

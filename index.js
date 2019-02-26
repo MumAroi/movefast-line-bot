@@ -38,6 +38,7 @@ function handleEvent(event) {
     // ignore non-text-message event
     return Promise.resolve(null);
   }
+  console.log(event)
   if (event.replyToken === '00000000000000000000000000000000' ||
     event.replyToken === 'ffffffffffffffffffffffffffffffff') {
     console.log('token fail')

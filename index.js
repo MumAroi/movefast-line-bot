@@ -59,7 +59,7 @@ function handleEvent(event) {
   if(event.message.text == 'shop')
   {
 
-    echo = { type: 'text', text: 'https://access.line.me/oauth2/v2.1/authorize?response_type=code&client_id=1649466878&redirect_uri=https://operation.dev.movefast.me/line/shop&state=login&scope=profile,openid,email&nonce=movefast_shop'}
+    echo = { type: 'text', text: 'https://access.line.me/oauth2/v2.1/authorize?response_type=code&client_id=1650015373&redirect_uri=https%3A%2F%2Foperation.dev.movefast.me%2Fline%2Fshop&state=login&scope=profile%20openid%20email&nonce=movefast_shop'}
   }
 
   // use reply API

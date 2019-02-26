@@ -54,13 +54,12 @@ function handleEvent(event) {
     return;
   }
 
+  // create a echoing text message
   let echo =  { type: 'text', text: event.message.text };
   if(event.message.text == 'shop')
   {
     echo = { type: 'text', text: 'https://operation.dev.movefast.me/line/shop/'+ event.source.userId }
   }
-
-  // create a echoing text message
 
   // use reply API
   return client.replyMessage(event.replyToken, echo);

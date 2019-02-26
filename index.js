@@ -25,7 +25,10 @@ app.get('/', (req,res)=>{
 app.post('/callback', line.middleware(config), (req, res) => {
   Promise
     .all(req.body.events.map(handleEvent))
-    .then((result) => res.json(result))
+    .then((result) => {
+      console.log(res.json(result))
+      return res.json(result)
+    })
     .catch((err) => {
       console.error(err);
       res.status(500).end();
@@ -41,10 +44,8 @@ function handleEvent(event) {
   console.log(event)
   if (event.replyToken === '00000000000000000000000000000000' ||
     event.replyToken === 'ffffffffffffffffffffffffffffffff') {
-    console.log('token fail')
     return;
   }
-  console.log('pass')
 
   // create a echoing text message
   const echo = { type: 'text', text: event.message.text };

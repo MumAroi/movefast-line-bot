@@ -54,7 +54,7 @@ function handleEvent(event) {
     return;
   }
 
-  const echo = {};
+  let echo = {};
   if(event.message.text == 'shop')
   {
     echo = { type: 'text', text: 'https://operation.dev.movefast.me/line/shop/'+ event.source.userId }

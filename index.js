@@ -58,7 +58,7 @@ function handleEvent(event) {
   let echo =  { type: 'text', text: event.message.text };
   if(event.message.text == 'shop')
   {
-    echo = { type: 'text', text: 'https://access.line.me/oauth2/v2.1/authorize?client_id=1650015373&redirect_uri=https%3A%2F%2Foperation.dev.movefast.me%2Fline%2Fcallback&scope=openid+profile+email&response_type=code&state=D5eWwod8t161LKKspiUJNc2rPXMDX9IAyxH52VEm'}
+    echo = { type: 'text', text: 'http://operation.dev.movefast.me/line/auth'}
   }
 
   // use reply API
